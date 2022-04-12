@@ -1,4 +1,0 @@
-Matrix-format: Row-Major
-Benchmarking MLIR 100 x 320 x 2048 
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
-"BM_Matmul/process_time/real_time",204,4.58345e+06,4.58318e+06,ns,,,,,

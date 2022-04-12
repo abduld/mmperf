@@ -303,6 +303,10 @@ static void BenchmarkFunction(benchmark::State &state) {
   lhs.set_cache_policy(ruy::CachePolicy::kCacheIfSignificantSpeedup);
 #endif
 
+#ifdef MKL
+  mkl_set_num_threads_local(1);
+#endif
+
   for (auto _ : state) {
 #if defined(MKL) || defined(OPENBLAS) || defined(BLIS) || defined(ACCELERATE)
     cblas_sgemm(MATRIX_FORMAT, CblasNoTrans, CblasNoTrans, MDIM, NDIM, KDIM,

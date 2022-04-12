@@ -1,4 +1,0 @@
-Matrix-format: Row-Major
-Benchmarking Ruy 361 x 192 x 1120 
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
-"BM_Matmul/process_time/real_time",228,3.07635e+06,3.07617e+06,ns,,,,,

@@ -57,6 +57,7 @@ BENCHMARK_ENV.update({
     "VECLIB_MAXIMUM_THREADS": "1",
     "OMP_NUM_THREADS": "1",
     "TVM_NUM_THREADS": "1",
+    "MKL_DEBUG_CPU_TYPE": "5",
 })
 
 
