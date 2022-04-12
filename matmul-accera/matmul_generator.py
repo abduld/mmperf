@@ -3,7 +3,7 @@ import accera as acc
 from accera.samples import MLAS, MLASOptions
 
 
-def gen_mlas_(M: int, N: int, K: int):
+def gen_mlas_(package, M: int, N: int, K: int):
     A = acc.Array(role=acc.Array.Role.INPUT,
                   element_type=acc.ScalarType.float32,
                   shape=(M, K))
@@ -94,7 +94,7 @@ with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
     for line in f.readlines():
         if line.startswith("#"):
             continue
-        gen_mlas(line)
+        gen_mlas(package, line)
 
 # Build a statically-linked HAT package to be consumed by the C++ runner
 package.build(name="accera_matmul",
