@@ -44,7 +44,8 @@ BAR_COLORS = {'mkl': 'cornflowerblue',
               'mlir-sandbox': 'mediumseagreen',
               'nodai-mlir-sandbox': 'red',
               'nodai-iree': 'red',
-              'nodai-iree-cuda': 'red'}
+              'nodai-iree-cuda': 'red',
+              'accera': 'black'}
 BENCHMARK_ENV = os.environ.copy()
 BENCHMARK_ENV.update({
     "MKL_NUM_THREADS": "1",

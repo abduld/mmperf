@@ -1,5 +1,6 @@
 # Backends
 option(USE_ACCELERATE "Enable Apple Accelerate Framework" OFF)
+option(USE_ACCERA "Enable Accera" OFF)
 option(USE_BLASFEO "Enable BLASFEO" OFF)
 option(USE_BLIS "Enable OpenBLAS" OFF)
 option(USE_CUBLAS "Enable cublas" OFF)
@@ -45,6 +46,7 @@ endif()
 
 set(VARS_TO_COPY
     USE_ACCELERATE
+    USE_ACCERA
     USE_BLASFEO
     USE_BLIS
     USE_CUBLAS
