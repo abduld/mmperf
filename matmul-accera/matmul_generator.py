@@ -96,11 +96,11 @@ def gen_mm(package, M, N, K):
 
 # Create a package and add a function to the package based on the plan
 package = acc.Package()
-# with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
-#     for line in f.readlines():
-#         if line.startswith("#"):
-#             continue
-#         gen_mlas(package, line)
+with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
+    for line in f.readlines():
+        if line.startswith("#"):
+            continue
+        gen_mlas(package, line)
 with open("../benchmark_sizes/benchmark_inceptionv3.txt") as f:
     for line in f.readlines():
         if line.startswith("#"):
