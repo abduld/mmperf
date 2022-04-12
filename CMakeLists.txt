@@ -234,7 +234,7 @@ ExternalProject_Add(matmul
     -DPREBUILT_LLVM_PATH=${PREBUILT_LLVM_PATH}  # switch if want to compile with a prebuilt llvm
     -DMLIR_DIR=${MLIR_INSTALL}/lib/cmake/mlir
     -DMLIR_BUILD=${MLIR_BUILD}
-    -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
+    -DCMAKE_BUILD_TYPE:STRING=Release
     -DMKL_DIR=${MKL_DIR}
     -DHALIDE_DIR=${HALIDE_INSTALL}
     -DBLASFEO_DIR=${BLASFEO_DIR}

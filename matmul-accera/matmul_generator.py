@@ -18,9 +18,9 @@ def gen_mlas_(package, M: int, N: int, K: int):
     package.add(plan, args=(A, B, C), base_name=f"acc_matmul_{M}x{N}x{K}")
 
 
-def gen_mlas(size: str):
+def gen_mlas(package, size: str):
     sizes = [int(e) for e in size.split("x")]
-    gen_mlas_(*sizes)
+    gen_mlas_(package, *sizes)
 
 
 def gen_matrix0(M, N, K):
@@ -91,6 +91,11 @@ def gen_matrix0(M, N, K):
 # Create a package and add a function to the package based on the plan
 package = acc.Package()
 with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
+    for line in f.readlines():
+        if line.startswith("#"):
+            continue
+        gen_mlas(package, line)
+with open("../benchmark_sizes/benchmark_inceptionv3.txt") as f:
     for line in f.readlines():
         if line.startswith("#"):
             continue

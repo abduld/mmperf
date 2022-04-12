@@ -6,3 +6,4 @@ __pycache__
 accera_matmul*
 accera_matmul_*
 _tmp
+mmperf_env
