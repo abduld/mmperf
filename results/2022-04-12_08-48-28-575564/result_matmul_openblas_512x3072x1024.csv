@@ -1,8 +1,0 @@
-Matrix-format: Row-Major
-Benchmarking OpenBLAS 512 x 3072 x 1024 
-Detected 0 errors.
-Detected 0 errors.
-Detected 0 errors.
-Detected 0 errors.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
-"BM_Matmul/process_time/real_time",200,4.0757e+06,1.94478e+08,ns,,,,,

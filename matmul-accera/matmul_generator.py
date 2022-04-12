@@ -14,7 +14,12 @@ def gen_mlas_(package, M: int, N: int, K: int):
                   element_type=acc.ScalarType.float32,
                   shape=(M, N))
 
-    plan, _ = MLAS(A, B, C, zero_C=True, opts=MLASOptions(UseBiasFusion=True))
+    plan, _ = MLAS(A,
+                   B,
+                   C,
+                   beta=0,
+                   zero_C=True,
+                   opts=MLASOptions(UseBiasFusion=True))
     package.add(plan, args=(A, B, C), base_name=f"acc_matmul_{M}x{N}x{K}")
 
 
@@ -23,7 +28,7 @@ def gen_mlas(package, size: str):
     gen_mlas_(package, *sizes)
 
 
-def gen_matrix0(M, N, K):
+def gen_mm(package, M, N, K):
     A = acc.Array(role=acc.Array.Role.INPUT,
                   element_type=acc.ScalarType.float32,
                   shape=(M, K))
@@ -56,7 +61,7 @@ def gen_matrix0(M, N, K):
     num_rows_in_kernel = 6
 
     # Create a CPU target which will define the hardware target characteristics
-    target = acc.Target(category=acc.Target.Category.CPU)
+    target = acc.Target(category=acc.Target.HOST)
 
     # Transform the iteration space
     ii = schedule.split(i, tile_size_i)
@@ -86,15 +91,16 @@ def gen_matrix0(M, N, K):
 
     # Kernelize the inner dimensions, which applies unroll and vectorize transformations
     plan.kernelize(unroll_indices=[jjj, iii, kkk], vectorize_indices=jjjj)
+    package.add(plan, args=(A, B, C), base_name=f"acc_matmul_{M}x{N}x{K}")
 
 
 # Create a package and add a function to the package based on the plan
 package = acc.Package()
-with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
-    for line in f.readlines():
-        if line.startswith("#"):
-            continue
-        gen_mlas(package, line)
+# with open("../benchmark_sizes/benchmark_all_sizes.txt") as f:
+#     for line in f.readlines():
+#         if line.startswith("#"):
+#             continue
+#         gen_mlas(package, line)
 with open("../benchmark_sizes/benchmark_inceptionv3.txt") as f:
     for line in f.readlines():
         if line.startswith("#"):

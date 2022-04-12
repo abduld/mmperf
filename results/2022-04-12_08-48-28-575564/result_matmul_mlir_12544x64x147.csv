@@ -1,7 +1,0 @@
-Matrix-format: Row-Major
-Benchmarking MLIR 12544 x 64 x 147 
-Detected 0 errors.
-Detected 0 errors.
-Detected 0 errors.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
-"BM_Matmul/process_time/real_time",16,4.32677e+07,4.32656e+07,ns,,,,,

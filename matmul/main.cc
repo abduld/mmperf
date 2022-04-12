@@ -374,6 +374,7 @@ static void BenchmarkFunction(benchmark::State &state) {
         fprintf(stderr, "Incorrect result at index %ld,%ld: C=%0.2f C2=%0.2f\n",
                 i, j, C[ci], C2[ci]);
         errors++;
+        // exit(1);
       }
     }
   }

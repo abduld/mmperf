@@ -1,6 +1,7 @@
 .vscode
 .env
 build
+build2
 __pycache__
 
 accera_matmul*
