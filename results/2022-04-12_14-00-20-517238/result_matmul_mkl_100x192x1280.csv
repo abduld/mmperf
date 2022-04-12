@@ -1,0 +1,4 @@
+Matrix-format: Row-Major
+Benchmarking MKL 100 x 192 x 1280 
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"BM_Matmul/process_time/real_time",1365,515061,515017,ns,,,,,

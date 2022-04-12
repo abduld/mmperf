@@ -211,6 +211,7 @@ def _do_single_permutation(i, path, msize):
     try:
         cmd = f'{path} --benchmark_format=csv > result_{path.name}.csv'
         result = subprocess.run(cmd,
+                                env=BENCHMARK_ENV,
                                 shell=True,
                                 stdout=subprocess.DEVNULL,
                                 check=True,
@@ -393,8 +394,10 @@ def main(argv):
     write_system_info(result_dir, args.bins.parent / 'cpuinfo-install')
 
     # get only the executables
-    bin_paths = [x for x in args.bins.iterdir() if
-                x.is_file() and x.stat().st_mode & 0o111 and x.name.startswith('matmul')]
+    bin_paths = [
+        x for x in args.bins.iterdir() if x.is_file() and x.stat().st_mode
+        & 0o111 and x.name.startswith('matmul')
+    ]
     # bin_paths = [
     #     x for x in args.bins.iterdir() if x.is_file() and x.stat().st_mode
     #     & 0o111 and x.name.startswith('matmul') and ("accera" in x.name)
